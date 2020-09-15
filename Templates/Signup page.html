@@ -1,0 +1,237 @@
+<!DOCTYPE html> 
+<html> 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dhruvilhirani.com</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Comicsans, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #8E8B8B;
+  padding: 30px;
+  text-align: center;
+  font-size: 30px;
+  color: #373737;
+}
+
+/* Create two columns/boxes that floats next to each other */
+.navbar {
+  width: 100%;
+  background-color: #523355;
+  overflow: auto;
+
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #050505;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+  
+}
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+}
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #777;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+
+.container:hover .overlay {
+  height: 100%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+      
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+
+</style>
+</head>
+<body>
+
+
+<section>
+  <div class="navbar">
+  <a href="mycart.html"><i class="fa fa-fw fa-home"></i> My Cart</a> 
+  <a href="home.html"><i class="fa fa-fw fa-user"></i>product</a>
+  <a href="login.html"><i class="fa fa-fw fa-user"></i>Log in</a>
+  <a href="signup.html"><i class="fa fa-fw fa-user"></i>Sign up</a>
+  <a href="contact.html"><i class="fa fa-fw fa-user"></i>contact us</a>
+</div>
+</section>
+<style> 
+    /*add full-width input fields*/ 
+      
+    input[type=text], 
+    input[type=password] { 
+        width: 100%; 
+        padding: 12px 20px; 
+        margin: 8px 0; 
+        display: inline-block; 
+        border: 2px solid #ccc; 
+        box-sizing: border-box; 
+    } 
+    /* set a style for all buttons*/ 
+      
+    button { 
+        background-color: #000000; 
+        color: white; 
+        padding: 15px 20px; 
+        margin: 8px 0; 
+        cursor: pointer; 
+        width: 100%; 
+    }    
+    button:hover { 
+        opacity: 0.7; 
+    } 
+    /*set styles for the cancel button*/ 
+      
+    .cancelbtn { 
+        padding: 15px 20px; 
+        background-color: #000000; 
+    } 
+    /*float cancel and signup buttons and add an equal width*/ 
+      
+    .cancelbtn, 
+    .signupbtn { 
+        float: left; 
+        width: 50%; 
+    } 
+    /*add padding to container elements*/ 
+      
+    .container { 
+        padding: 16px; 
+    } 
+
+    /*clear floats*/ 
+      
+    .clearfix::after { 
+        content: ""; 
+        clear: both; 
+        display: table; 
+    } 
+    /*styles for cancel button and signup button  
+      on extra small screens*/ 
+      
+    @media screen and (max-width: 300px) { 
+        .cancelbtn, 
+        .signupbtn { 
+            width: 100%; 
+        } 
+    } 
+</style> 
+  
+<body> 
+   <h3  ><u>{{dynamic}}</u></h3>
+    <h2>Signup Form</h2> 
+    <!--Step 1:Adding HTML-->
+    <form action="signup" style="border:1px solid #ccc" method="POST"> 
+      {%  csrf_token %}
+        <div class="container"> 
+            <label><b>User name</b></label> 
+            <input type="text" placeholder="Enter User name" name="uname" required> 
+            <label><b>password</b></label> 
+            <input type="password" placeholder="Enter Password" name="psw" required>
+            <label><b>confirm Password</b></label> 
+            <input type="password" placeholder="Confirm Password" name="psw_repeat" required> 
+            <label><b>age</b></label> 
+            <input type="text" placeholder="Enter age " name="age" required> 
+            <label><b>Male</b></label> 
+            <input type="radio"  name="gender" required>
+            <label><b>Female</b></label> 
+            <input type="radio" name="gender" required>
+            <input type="checkbox" checked="checked"> Remember me 
+            <p>I agree <a href="terms.html">Terms & condition</a>.</p> 
+  
+            <div class="clearfix"> 
+                 <button type="submit" class="signupbtn">Sign Up</button>
+                 <a href="main.html"><button type="button" class="cancelbtn">Cancel</button> 
+                
+            </div> 
+            
+        </div> 
+    </form> 
+    
+</body> 
+  
+</html> 

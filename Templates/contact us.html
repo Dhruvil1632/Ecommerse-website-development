@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>dhruvilhirani.com</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Comicsans, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #8E8B8B;
+  padding: 30px;
+  text-align: center;
+  font-size: 30px;
+  color: #373737;
+}
+
+/* Create two columns/boxes that floats next to each other */
+.navbar {
+  width: 100%;
+  background-color: #523355;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #050505;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+  nav, article {
+    width: 100%;
+    height: auto;
+  
+  }
+}
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+}
+.image {
+  display: block;
+  width: 16%;
+  height: auto;
+}
+
+.container:hover .overlay {
+  height: 100%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 113px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#im1{
+    height: 81px;
+    width: 79px;
+}
+#im2{
+    height: 81px;
+    width: 79px;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+.text_box{
+  border-radius: 20px;
+  margin-top: 7px;
+  height: 30px;
+  margin-left: 550px;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+
+</style>
+</head>
+
+<section>
+  <div class="navbar">
+  <a href="#"><i class="fa fa-fw fa-home"></i> My Cart</a> 
+  <a href="home.html"><i class="fa fa-fw fa-user"></i>product</a>
+  <a href="login.html"><i class="fa fa-fw fa-user"></i>Log in</a>
+  <a href="signup.html"><i class="fa fa-fw fa-user"></i>Sign up</a>
+  <a href="contact.html"><i class="fa fa-fw fa-user"></i>contact us</a>
+</div>
+</div>
+<div>
+    Kindly share your queries on <h3><b>dhruvilhirani0@gmail.com</b></h3>
+    or you can find us on Linkdln or github
+</div height = 300px>
+{% load static %}
+<a href="https://www.linkedin.com/in/dhruvil-hirani-b9ab53198/" target="_blank"><img src="{%static 'smallmall/linkdln.png'%}" alt="Linkdln" class="image" id="im1" ></a>
+<a href="https://github.com/dhruvil1632" target="_blank"><img src="{%static 'smallmall/github.png'%}" alt="github" class="image" id="im2" ></a>
+</body>
+</html>

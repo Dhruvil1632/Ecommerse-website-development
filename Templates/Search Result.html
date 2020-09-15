@@ -1,0 +1,178 @@
+{% load static %}
+{% static "media" as baseurl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>smallart.com</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Comicsans, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #8E8B8B;
+  padding: 30px;
+  text-align: center;
+  font-size: 30px;
+  color: #373737;
+}
+
+/* Create two columns/boxes that floats next to each other */
+.navbar {
+  width: 100%;
+  background-color: #523355;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #050505;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+  nav, article {
+    width: 100%;
+    height: auto;
+  
+  }
+}
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+}
+.image {
+  display: block;
+  width: 84%;
+  height: auto;
+}
+
+.container:hover .overlay {
+  height: 100%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 113px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.card{
+  display: inline-block;
+  margin-top: 20px;
+  border-color: black;
+  border-style: solid;
+  size:150px;
+  
+}
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+.text_box{
+  border-radius: 20px;
+  margin-top: 7px;
+  height: 30px;
+  margin-left: 550px;}
+  .see_more{
+    color: black;
+    margin-top:200px;
+  }
+  form {
+      display: inline-block;
+    }
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+
+</style>
+</head>
+<body>
+
+<section>
+  <div class="navbar">
+  <a href="mycart.html"><i class="fa fa-fw fa-home"></i>My Cart</a> 
+  <a href="home.html"><i class="fa fa-fw fa-user"></i>product</a>
+  <a href="login.html"><i class="fa fa-fw fa-user"></i>Log in</a>
+  <a href="signup.html"><i class="fa fa-fw fa-user"></i>Sign up</a>
+  <a href="contact.html"><i class="fa fa-fw fa-user"></i>contact us</a>
+  <form action="search" method="POST">
+    {%  csrf_token %}
+    <input class = "text_box" type="text" placeholder="filter your product by name" name="search_product">
+    <input class = "text_box" type="text" value="10000" placeholder="Enter maximum price" name="search_product_price">
+    <button type="submit">Search</button> 
+  </form>
+  </div>
+  <br>
+<a href="#" class="see_more" ><b>more relavent products</b></a>
+
+</div>
+<br>
+{% for i in products %}
+<div class="card" style="width: 13rem; height:15rem;">
+  <img src="{{baseurl}}/{{i.product_img}}" class="card-img-top" alt="..." height="100px" width="203px">
+  <h4 class="card-title">{{i.product_name}}</h4>
+  <h5>{{i.product_price}}</h5>
+  <p class="card-text"><h5>{{i.desc}}</h5></p>
+  <form action="add_to_cart1" method="POST">
+    {%  csrf_token %}
+  <button type="submit" value = "{{i.product_id}}" name="select_product">Add to Cart</button>
+  </form>
+  <form action="purchase" method="POST">
+    {%  csrf_token %}
+    <button type="submit" value="{{i}}" name="selected_product" width="100px">Purchase</button>
+  </form>
+ </div>
+{% endfor %}
+</section>
+</div>
+</body>
+</html>
